@@ -60,7 +60,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
       <div style={{
         position: "absolute", top: -80, right: -80,
         width: 280, height: 280, borderRadius: "50%",
-        background: `radial-gradient(circle, ${project.color}18 0%, transparent 70%)`,
+        background: `radial-gradient(circle, rgba(232,50,60,0.1) 0%, transparent 70%)`,
         pointerEvents: "none",
       }} />
 
