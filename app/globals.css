@@ -1,0 +1,93 @@
+/* ── Google Fonts — 2 fonts only ── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ══ TOKENS ══ */
+:root {
+  --bg:      #FAFAFC;
+  --surface: rgba(255,255,255,0.72);
+  --glass-bg:rgba(255,255,255,0.82);
+  --red:     #E8323C;
+  --red-dim: rgba(232,50,60,0.08);
+  --red-glow:rgba(232,50,60,0.15);
+  --white:   #121420;
+  --white-70:rgba(18,20,32,0.70);
+  --white-40:rgba(18,20,32,0.40);
+  --border:  rgba(18,20,32,0.08);
+  --section-bg-opacity: 0.18;
+  --hero-bg-opacity: 0.25;
+
+  /* ── Typography — 2 fonts only ── */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg:      #121420;
+  --surface: rgba(28,31,48,0.72);
+  --glass-bg:rgba(28,31,48,0.82);
+  --white:   #FFFFFF;
+  --white-70:rgba(255,255,255,0.70);
+  --white-40:rgba(255,255,255,0.40);
+  --border:  rgba(255,255,255,0.08);
+  --red-dim: rgba(232,50,60,0.14);
+  --red-glow:rgba(232,50,60,0.35);
+  --section-bg-opacity: 0.08;
+  --hero-bg-opacity: 0.35;
+}
+
+/* ══ RESET ══ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html  { scroll-behavior: smooth; font-size: 16px; }
+body  {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ══ TYPOGRAPHY ══ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+p   { color: var(--white-70); line-height: 1.75; }
+a   { color: inherit; text-decoration: none; }
+
+/* ══ SELECTION ══ */
+::selection { background: var(--red); color: #fff; }
+
+/* ══ SCROLLBAR ══ */
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 600px) {
+  section { padding-left: 1rem !important; padding-right: 1rem !important; }
+  section[style*="8rem"] { padding-top: 5rem !important; padding-bottom: 3rem !important; }
+  h1 { font-size: clamp(2rem, 10vw, 3rem) !important; }
+}
+.grain {
+  position: fixed; top:-50%; left:-50%;
+  width:200%; height:200%;
+  pointer-events:none; z-index:100; opacity:0.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  animation:grain 0.5s steps(1) infinite;
+}
+@keyframes grain {
+  0%,100%{transform:translate(0,0)}  10%{transform:translate(-2%,-2%)}
+  20%{transform:translate(2%,2%)}    30%{transform:translate(-2%,2%)}
+  40%{transform:translate(2%,-2%)}   50%{transform:translate(-1%,1%)}
+  60%{transform:translate(1%,-1%)}   70%{transform:translate(-1%,-1%)}
+  80%{transform:translate(1%,1%)}    90%{transform:translate(-2%,1%)}
+}
